@@ -1,0 +1,44 @@
+<div style="margin-left:16vw;margin-right:16vw">
+<div id="display">
+    <div style="display: flex;align-items: center;">
+        <p style="margin: 0%;font-size: x-large;">Compounds</p>
+    </div>
+    <app-button text="{{showAddTask ? 'Close':'Add'}}" color="{{showAddTask ? 'red':'steelblue'}}" (click)="onClick()"></app-button>
+</div>
+<app-add-compound *ngIf="showAddTask" (addCompound)="addCompound($event)" (closeForm)="showAddTask = false"></app-add-compound>
+<ng-container *ngIf="currPage">
+  <div id="cards" [@listAnimation]="currPage + '-' + compounds.length">
+    <app-compound-item
+      [ngStyle]="{'width':'220px'}"
+      *ngFor="let compound of compounds"
+      [compound]="compound"
+      (deleteClick)="deleteCompound($event)">
+    </app-compound-item>
+  </div>
+</ng-container>
+<div style="display: flex; align-items: center; justify-content: space-between; padding: 10px;">
+  <!-- Left -->
+  <div style="flex: 1;">
+    <p style="cursor: pointer; margin: 0;" *ngIf="currPage !== 1" [routerLink]="['']" [queryParams]="{ pg: 1 }">
+      Jump To First Page
+    </p>
+  </div>
+
+  <!-- Center -->
+  <div style="flex: 1; text-align: center;">
+    <p style="margin: 0;">{{ "Page " + currPage + " of " + totalPage }}</p>
+  </div>
+
+  <!-- Right -->
+  <div style="flex: 1; display: flex; justify-content: flex-end; gap: 15px;">
+    <p style="cursor: pointer; margin: 0;" *ngIf="currPage !== 1" [routerLink]="['']" [queryParams]="{ pg: currPage - 1 }">
+      Prev
+    </p>
+    <p style="cursor: pointer; margin: 0;" *ngIf="currPage !== totalPage" [routerLink]="['']" [queryParams]="{ pg: currPage + 1 }">
+      Next
+    </p>
+  </div>
+</div>
+</div>
+
+

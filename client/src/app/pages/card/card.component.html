@@ -1,0 +1,20 @@
+<div style="margin-left:16vw;margin-right:16vw">
+    <div id="display">
+        <div style="display: flex;align-items: center;">
+            <a routerLink="/" style="margin: 0%;font-size: x-large;">Go Back</a>
+        </div>
+        <app-button text="{{showAddTask ? 'Close':'Edit'}}" color="{{showAddTask ? 'red':'green'}}" (click)="onClick()"></app-button>
+    </div>
+    <app-edit-compound *ngIf="showAddTask" [name]="compound.name" [image]="compound.image" [description]="compound.description" (editCompound)="editCompound($event)" (closeEditForm)="showAddTask = false"></app-edit-compound>
+    <div id="card">
+        <div>
+            <h2>{{compound.name}}</h2>
+        </div>
+        <div>
+            <img style="width: 200px;height: 200px;" src={{compound.image}} alt="img">
+        </div>
+        <div>
+            <h4>{{compound.description}}</h4>
+        </div>
+    </div>
+</div>

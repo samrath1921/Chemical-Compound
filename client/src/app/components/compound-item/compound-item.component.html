@@ -1,0 +1,11 @@
+<div id="card">
+    <div style="width: 100%;display: flex;justify-content: center;">
+        <img style="width: 100px;height: 100px;" src={{compound.image}} alt="img">
+    </div>
+    <div style="display: flex;justify-content: center;">
+        <a style="text-align: center;" [routerLink]="['/compound',compound.id]">{{compound.name}}</a>
+    </div>
+    <div>
+        <button class="btn" (click)="deleteCompound()" >Delete</button>
+    </div>
+</div>

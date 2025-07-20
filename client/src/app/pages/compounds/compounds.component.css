@@ -1,0 +1,16 @@
+#display{
+    display: flex;
+    justify-content: space-between;
+    margin-top:3%;
+    background-color: rgb(215, 215, 214);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#cards{
+    display: flex;
+    min-height:70vh;
+    justify-content: space-around;
+    align-items:center;
+    flex-wrap:wrap;
+}
